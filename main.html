@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC-Engine: A Simple Game Engine in Rust</title>
+    <style>
+        :root {
+            --background-color: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #4CAF50;
+            --code-background: #2a2a2a;
+            --gradient-start: #2c3e50;
+            --gradient-end: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: rgba(37, 37, 37, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.8), rgba(30, 30, 30, 0.8));
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-color), #66BB6A);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+            background: rgba(42, 42, 42, 0.6);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .feature-visual {
+            flex: 1;
+            text-align: center;
+        }
+
+        .code-block {
+            background-color: var(--code-background);
+            border-radius: 5px;
+            padding: 20px;
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            border: 1px solid #3a3a3a;
+        }
+
+        .code-block code {
+            color: #e06c75;
+        }
+
+        .code-block .keyword {
+            color: #c678dd;
+        }
+
+        .code-block .type {
+            color: #61afef;
+        }
+
+        .code-block .function {
+            color: #98c379;
+        }
+
+        .code-block .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: rgba(37, 37, 37, 0.8);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="Temp Flat Logo.png" alt="ABC-Engine Logo"
+                    style="scale:6.0;position: fixed; transform-origin: 0% 40%;">
+            </div>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#learn">Learn</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="https://github.com/ABC-Engine/ABC-Game-Engine" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>An Engine as Easy as Your ABC's!</h2>
+            <p>Free and Open Source!</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </section>
+
+        <section id="features">
+            <div class="feature">
+                <div class="feature-content">
+                    <h3>Data Driven</h3>
+                    <p>Built upon ABC-ECS</p>
+                    <ul>
+                        <li><strong>Fast:</strong> Optimized for performance and ease of use</li>
+                        <li><strong>Easy:</strong> Components can be any rust struct no derive needed</li>
+                        <li><strong>Capable:</strong> Supports custom rendering options as well as official ones</li>
+                    </ul>
+                </div>
+                <div class="feature-visual" style="scale: 0.6; position: relative;">
+                    <img src="ecs code.png" alt="ECS Visualization">
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-visual" style="scale:0.6; ">
+                    <img src="lumenpyx_frame.png" alt="2D Renderer Example">
+                </div>
+                <div class="feature-content">
+                    <h3>2D Renderer</h3>
+                    <p>Create text-based or pixel art games with ease</p>
+                    <ul>
+                        <li><strong>Console Renderer:</strong> For text-based games</li>
+                        <li><strong>Pixel Art Renderer:</strong> Using Lumenpyx for beautiful 2D graphics</li>
+                        <li><strong>Flexible:</strong> Choose the renderer that fits your project or even make your own!
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-content">
+                    <h3>Physics Integration</h3>
+                    <p>Realistic simulations powered by Rapier</p>
+                    <ul>
+                        <li><strong>Collision Detection:</strong> Accurate and efficient</li>
+                        <li><strong>Customizable:</strong> Tailor the physics to your game's needs</li>
+                        <li><strong>Learning Tool:</strong> Great for understanding game physics</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <img src="rapier logo.svg" alt="Physics Engine Visualization">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ABC-Engine. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
