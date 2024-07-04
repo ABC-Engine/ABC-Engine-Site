@@ -5,231 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC-Engine: A Simple Game Engine in Rust</title>
-    <style>
-        :root {
-            --background-color: #1e1e1e;
-            --text-color: #ffffff;
-            --accent-color: #4CAF50;
-            --code-background: #2a2a2a;
-            --gradient-start: #2c3e50;
-            --gradient-end: #1e1e1e;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'accent': '#4CAF50',
+                        'gradient-start': '#2c3e50',
+                        'gradient-end': '#1e1e1e',
+                    },
+                },
+            },
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background-color: rgba(37, 37, 37, 0.8);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .logo h1 {
-            font-size: 2rem;
-            margin: 0;
-            background: linear-gradient(45deg, #4CAF50, #81C784);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: linear-gradient(45deg, rgba(44, 62, 80, 0.8), rgba(30, 30, 30, 0.8));
-            border-radius: 10px;
-            margin: 2rem 0;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--accent-color), #66BB6A);
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4rem;
-            background: rgba(42, 42, 42, 0.6);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-content {
-            flex: 1;
-            padding-right: 2rem;
-        }
-
-        .feature-visual {
-            flex: 1;
-            text-align: center;
-        }
-
-        .code-block {
-            background-color: var(--code-background);
-            border-radius: 5px;
-            padding: 20px;
-            font-family: 'Fira Code', 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-            border: 1px solid #3a3a3a;
-        }
-
-        .code-block code {
-            color: #e06c75;
-        }
-
-        .code-block .keyword {
-            color: #c678dd;
-        }
-
-        .code-block .type {
-            color: #61afef;
-        }
-
-        .code-block .function {
-            color: #98c379;
-        }
-
-        .code-block .comment {
-            color: #5c6370;
-            font-style: italic;
-        }
-
-        footer {
-            background-color: rgba(37, 37, 37, 0.8);
-            color: var(--text-color);
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-    </style>
+    </script>
 </head>
 
-<body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <img src="Temp Flat Logo.png" alt="ABC-Engine Logo"
-                    style="scale:6.0;position: fixed; transform-origin: 0% 40%;">
+<body class="font-sans text-white bg-gradient-to-br from-gradient-start to-gradient-end min-h-screen">
+    <header class="bg-opacity-80 bg-gray-900 sticky top-0 z-50 backdrop-filter backdrop-blur-sm">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="Temp Flat Logo.png" alt="ABC-Engine Logo" class=" h-12 scale-600 fixed origin-left-top">
             </div>
-            <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="https://discord.gg/55R3GsBSYC">Community</a></li>
-                <li><a href="https://github.com/ABC-Engine/ABC-Game-Engine/tree/main/examples">Examples</a></li>
-                <li><a href="https://github.com/ABC-Engine/ABC-Game-Engine" target="_blank">GitHub</a></li>
+            <ul class="flex space-x-6">
+                <li><a href="#features" class="font-bold hover:text-accent transition-colors">Features</a></li>
+                <li><a href="https://discord.gg/55R3GsBSYC"
+                        class="font-bold hover:text-accent transition-colors">Community</a></li>
+                <li><a href="https://github.com/ABC-Engine/ABC-Game-Engine/tree/main/examples"
+                        class="font-bold hover:text-accent transition-colors">Examples</a></li>
+                <li><a href="https://github.com/ABC-Engine/ABC-Game-Engine" target="_blank"
+                        class="font-bold hover:text-accent transition-colors">GitHub</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <h2>An Engine as Easy as Your ABC's!</h2>
-            <p>Free and Open Source!</p>
-            <a href="#" class="cta-button">Get Started</a>
+    <main class="container mx-auto px-4">
+        <section class="text-center py-16 bg-gradient-to-r from-gray-800 to-gray-900 bg-opacity-80 rounded-lg my-8">
+            <h2 class="text-4xl mb-4">An Engine as Easy as Your ABC's!</h2>
+            <p class="mb-4">Free and Open Source!</p>
+            <a href="https://github.com/ABC-Engine/ABC-Game-Engine"
+                class="inline-block bg-gradient-to-r from-accent to-green-500 text-white py-3 px-6 rounded font-bold transition-all hover:-translate-y-1 hover:shadow-lg">Get
+                Started</a>
         </section>
 
         <section id="features">
-            <div class="feature">
-                <div class="feature-content" style="display:block;">
-                    <h3>Data Driven</h3>
-                    <p>Built upon ABC-ECS</p>
-                    <ul>
-                        <li><strong>Fast:</strong> Optimized for performance and ease of use with parellel capabilities
+            <div class="flex justify-between items-center mb-16 bg-gray-800 bg-opacity-60 rounded-lg p-8 shadow-md">
+                <div class="flex-1 pr-8">
+                    <h3 class="text-2xl mb-4">Data Driven</h3>
+                    <p class="mb-4">Built upon ABC-ECS</p>
+                    <ul class="list-disc pl-5">
+                        <li><strong>Fast:</strong> Optimized for performance and ease of use with parallel capabilities
                         </li>
                         <li><strong>Easy:</strong> Components can be any rust struct no derive needed</li>
                         <li><strong>Capable:</strong> Supports a wide range of game development tasks with its flexible
-                            and powerful ECS framework.
-
-
-
-                        </li>
+                            and powerful ECS framework.</li>
                     </ul>
                 </div>
-                <div class="feature-visual" style="scale: 0.4; position:relative; margin: -55%;">
-                    <img src="ecs code.png" alt="ECS Visualization">
+                <div class="flex-1 text-center">
+                    <img src="ecs code.png" alt="ECS Visualization" class="scale-40 relative">
                 </div>
             </div>
 
-            <div class="feature">
-                <div class="feature-visual" style="scale:0.4; margin: -28%; ">
-                    <img src="lumenpyx_frame.png" alt="2D Renderer Example"
-                        style="border-radius: 2%; border-collapse: separate;">
+            <div class="flex justify-between items-center mb-16 bg-gray-800 bg-opacity-60 rounded-lg p-8 shadow-md">
+                <div class="flex-1 text-center">
+                    <img src="lumenpyx_frame.png" alt="2D Renderer Example" class="scale-40 rounded">
                 </div>
-                <div class="feature-content">
-                    <h3>2D Renderer</h3>
-                    <p>Create text-based or pixel art games with ease</p>
-                    <ul>
+                <div class="flex-1 pl-8">
+                    <h3 class="text-2xl mb-4">2D Renderer</h3>
+                    <p class="mb-4">Create text-based or pixel art games with ease</p>
+                    <ul class="list-disc pl-5">
                         <li><strong>Console Renderer:</strong> For text-based games</li>
                         <li><strong>Pixel Art Renderer:</strong> Using Lumenpyx for beautiful 2D graphics</li>
                         <li><strong>Flexible:</strong> Choose the renderer that fits your project or even make your own!
@@ -238,17 +82,17 @@
                 </div>
             </div>
 
-            <div class="feature">
-                <div class="feature-content">
-                    <h3>Physics Integration</h3>
-                    <p>Realistic simulations powered by Rapier</p>
-                    <ul>
+            <div class="flex justify-between items-center mb-16 bg-gray-800 bg-opacity-60 rounded-lg p-8 shadow-md">
+                <div class="flex-1 pr-8">
+                    <h3 class="text-2xl mb-4">Physics Integration</h3>
+                    <p class="mb-4">Realistic simulations powered by Rapier</p>
+                    <ul class="list-disc pl-5">
                         <li><strong>Collision Detection:</strong> Accurate and efficient</li>
                         <li><strong>Customizable:</strong> Tailor the physics to your game's needs</li>
                         <li><strong>Learning Tool:</strong> Great for understanding game physics</li>
                     </ul>
                 </div>
-                <div class="feature-visual">
+                <div class="flex-1 text-center">
                     <img src="rapier logo.svg" alt="Physics Engine Visualization">
                 </div>
             </div>
